@@ -1,0 +1,47 @@
+{% load static %}
+
+{% if request.user.is_authenticated %}
+<nav>
+    <a href="{% url 'index' %}">
+      <img src="{% static 'assets/Frame399841.svg' %}" alt="Frame" />
+    </a>
+    <div class="profile-container">
+    <span>Credits Remaining: {{ request.user.credits }}</span>
+    <img id="profile-pic" src="{% static 'assets/avatar-img.png' %}" alt="avatar" />
+    <div class="profile-dialog">
+        <div class="user">
+         <h4>{{ request.user.first_name }} 
+         {% if request.user.last_name %}
+          {{ request.user.last_name }}
+         {% endif %}
+        </h4>
+        <p>{{ request.user.email }}</p>
+        </div>
+        <div class="buttons">
+        <button class='sub-btn' style="padding: 7px;" id="manageSubscriptionBtn">Manage Subscription</button>
+        <button style="padding: 7px;">Credit left <span>{{ request.user.credits }}<span></button>
+        <button style="padding: 7px;">Affiliate</button>
+        <form id="logout-form" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+          </form>
+        </div>
+    </div>
+    </div>
+</nav>
+<script>
+    const profilePic = document.getElementById("profile-pic");
+    const profileDialog = document.querySelector(".profile-dialog");
+
+    profilePic.addEventListener("click", () => {
+      profileDialog.classList.toggle("show");
+    });
+
+    document.getElementById('manageSubscriptionBtn').addEventListener('click', function() {
+		window.location.href = '/subscription/';
+  })
+  </script>
+{% else %}
+
+{% endif %}
+

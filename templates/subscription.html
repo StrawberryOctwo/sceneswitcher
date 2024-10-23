@@ -1,0 +1,317 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Dashboard</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- Preconnecting to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+    <!-- Custom Stylesheet -->
+     <link rel="stylesheet" href="{% static 'css/subscription.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}"/>
+   <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+</head>
+
+
+
+<body>
+	 {% include 'includes/profile.html' %}
+    <!-- Header Section Start -->
+    <header class="admin-header">
+        <div class="container">
+            <div class="header-two">
+		 <div class="hm-logo text-center">
+		    <a href="#!"><img src="{% static 'images/sceneswitcher.png' %}" alt="VSL Logo" /></a>
+                </div>
+                <div class="header-profile">
+                    <div class="credit-score">
+                        <span>Credits Remaining: </span> <span>10</span>
+                    </div>
+                    <a href="#!" class="profile-icn">
+                        <img src="{% static 'images/admin-user-icn.svg' %}" alt="User Profile" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Subscription Information Start -->
+    <div class="content">
+        {% for message in messages %}
+            <script>
+                alert("{{ message }}");
+            </script>
+        {% endfor %}
+        <div class="text">
+            <p class="sub-p">Subscription Details</p>
+            <a style="text-decoration: none;" href="{% url 'direct-to-customer-portal' %}">
+                <p class="bill">Manage Billing Info</p>
+            </a>
+        </div>
+        <div class="for-border">
+            <div class="plan">
+                <p class="current-text">Current Plan</p>
+                <p class="btn">{{current_plan}}</p>
+            </div>
+            <div class="plan subs">
+                <p class="sub-text">Subscription Status</p>
+                <p class="act">Active</p>
+            </div>
+            <div class="credit">
+                <p class="cr-usage">Credit Usage</p>
+                <div class="credit-text">
+                    <p>Any unused credit will roll over to the next month</p>
+                    <p>{{used}}/{{all}} Used (Rest in {{days_lift}} Days) </p>
+                </div>
+                <!-- <div class="bar"></div> -->
+                <div class="bar">
+                    <div class="bar-fill"></div>
+                </div>
+                <script>
+                    bar_fill = document.querySelector('.bar-fill');
+                    bar_fill.style.width = '{{used_percentage}}%';
+                </script>
+
+            </div>
+        </div>
+    </div>
+    <!-- Subscription Information End -->
+
+    <!-- Additional Credit Purchase Section Start -->
+    <div class="second-main">
+        <div class="heading">Need More Credits?</div>
+        <p>
+		Out of credits for the month? Easily add more credits to your plan, with a minimum of 5, and keep your winning VSLs fresh and engaging for your audience.
+        </p>
+
+    </div>
+
+    <div class="credit-box">
+    <div class="box-cont">
+        <p class="cr">Buy More Variations</p>
+        <p class="dollar">$5 Each</p>
+        <form action="{% url 'buy-extra-credit' %}">
+            {% csrf_token %}
+            <input type="text" name="no_credits" id="credit" placeholder="Enter the amount of Credits" />
+            <button type="submit" style="width: 100%; padding: 10px; margin-top: 5px;">Buy</button>
+        </form>
+    </div>
+</div>
+
+    <!-- Additional Credit Purchase Section End -->
+
+    <!-- Subscription Plans Section Start -->
+    <div class="main-head">
+        <h1>Flexible Pricing to Suit Your Needs</h1>
+        <p>Think about the ROI of one winning VSL—now multiply that by 20, 40, or even 60! Here’s what you’ll get:</p>
+    </div>
+        
+    <div class="plans">
+        <!-- Starter Plan -->
+        
+        {% if current_plan == 'basic' %}
+            <div class="box box-sub">
+            <div class="icon icon-prem">
+                <img src= "{% static 'images/user.png' %}"alt="">
+            </div>
+            <p class="box-head">Basic</p>
+            <div class="price">
+                <h1>$297</h1><span style="color: rgba(100, 106, 105, 1);">Per Month</span>
+            </div>
+            <p class="p-pro p-pro2">$14.85/video</p>
+            <p class="p-pro p-pro3"><i class="fa-solid fa-check pro-i"></i>20 New Variations Per Month</p>
+            {% if current_plan == 'basic' %}
+                    <a href="{% url 'confirm' action='cancel' plan='basic' %}">
+                        <button>
+                            Cancel Subscription
+                        </button>
+                    </a>
+                {% else %}
+                <a href="{% url 'confirm' action='downgrade' plan='basic' %}">
+
+                    <button>Downgrade Subscription</button>
+                </a>
+
+                {% endif %}
+                    
+        </div>
+        {% else %}
+        <div class="box">
+            <div class="icon">
+                <img src= "{% static 'images/user.png' %}"alt="">
+            </div>
+            <p class="box-head box2">Basic</p>
+            <div class="price">
+                <h1>$297</h1><span>Per Month</span>
+            </div>
+            <p id="p">$14.85/video</p>
+            <p class="p"><span class="icon-span"><i class="fa-solid fa-check"></i></span>20 New Variations Per Month</p>
+            
+            
+            {% if current_plan == 'basic' %}
+            <a href="{% url 'confirm' action='cancel' plan='basic' %}">
+                <button>
+                    Cancel Subscription
+                </button>
+            </a>
+            {% else %}
+            <a href="{% url 'confirm' action='downgrade' plan='basic' %}">
+                
+                <button>Downgrade Subscription</button>
+            </a>
+            
+            {% endif %}
+            
+        </div>
+        {% endif %}
+        
+        <!-- Growth Plan -->
+        
+        {% if current_plan == 'professional' %}
+        <div class="box box-sub">
+            <div class="icon icon-prem">
+                <img src="{% static 'images/group-user.png' %}" alt="">
+            </div>
+            <p class="box-head">Professional</p>
+            <div class="price">
+                <h1>$497</h1><span style="color: rgba(100, 106, 105, 1);">Per Month</span>
+            </div>
+            <p class="p-pro p-pro2">$12.42/video</p>
+            <p class="p-pro p-pro3"><i class="fa-solid fa-check pro-i"></i>40 New Variations Per Month</p>
+            {% if current_plan == 'professional' %}
+                    <a href="{% url 'confirm' action='cancel' plan='basic' %}">
+                        <button>
+                            Cancel Subscription
+                        </button>
+                    </a>
+                {% elif current_plan == 'premium' %}
+                <a href="{% url 'confirm' action='downgrade' plan='professional' %}">
+
+                    <button>Downgrade Subscription</button>
+                </a>
+                {% else %}
+                <a href="{% url 'confirm' action='upgrade' plan='professional' %}">
+                    <button>Upgrade Subscription</button>
+                </a>
+                {% endif %}
+        </div>
+        {% else %}
+
+        <div class="box">
+            <div class="icon">
+                <img src="{% static 'images/group-user.png' %}" alt="">
+            </div>
+            <p class="box-head box2">Professional</p>
+            <div class="price">
+                <h1>$497</h1><span>Per Month</span>
+            </div>
+            <p id="p">$12.42/video</p>
+            <p class="p"><i class="fa-solid fa-check"></i>40 New Variations Per Month</p>
+                {% if current_plan == 'professional' %}
+                    <a href="{% url 'confirm' action='cancel' plan='professional' %}">
+                        <button>
+                            Cancel Subscription
+                        </button>
+                    </a>
+                {% elif current_plan == 'premium' %}
+                <a href="{% url 'confirm' action='downgrade' plan='professional' %}">
+
+                    <button>Downgrade Subscription</button>
+                </a>
+                {% else %}
+                
+                <a href="{% url 'confirm' action='upgrade' plan='professional' %}">
+                    <button>Upgrade Subscription</button>
+                </a>
+                {% endif %}
+        </div>
+        {% endif %}
+            
+        <!-- Pro Plan -->
+        
+        {% if current_plan == 'premium' %}
+        <div class="box box-sub">
+            <div class="icon icon-prem">
+                <img src="{% static 'images/lucide.png' %}" alt="">
+            </div>
+            <p class="box-head">Premium</p>
+            <div class="price">
+                <h1>$697</h1><span style="color: rgba(100, 106, 105, 1);">Per Month</span>
+            </div>
+            <p class="p-pro p-pro2">$11.62/video</p>
+            <p class="p-pro p-pro3"><i class="fa-solid fa-check pro-i"></i>60 New Variations Per Month</p>
+            
+            {% if current_plan == 'premium' %}
+                    <a href="{% url 'confirm' action='cancel' plan='professional' %}">
+                        <button>
+                            Cancel Subscription
+                        </button>
+                    </a>
+                {% else %}
+                    
+                <a href="{% url 'confirm' action='upgrade' plan='premium' %}">
+                    <button>Upgrade Subscription</button>
+                </a>
+                {% endif %} 
+        </div>
+        {% else %}
+        <div class="box">
+            <div class="icon">
+                <img src="{% static 'images/lucide.png' %}" alt="">
+            </div>
+            <p class="box-head box2">Premium</p>
+            <div class="price">
+                <h1>$697</h1><span>Per Month</span>
+            </div>
+            <p id="p">$11.62/video</p>
+            <p class="p"><span class="icon-span"><i class="fa-solid fa-check"></i></span>60 New Variations Per Month</p>
+            
+            
+            {% if current_plan == 'premium' %}
+                    <a href="{% url 'confirm' action='cancel' plan='professional' %}">
+                        <button>
+                            Cancel Subscription
+                        </button>
+                    </a>
+                {% else %}
+                <a href="{% url 'confirm' action='upgrade' plan='premium' %}">
+                    <button>Upgrade Subscription</button>
+                </a>
+                {% endif %}
+        </div>
+        {% endif %}
+            
+        
+    </div>
+    <!-- Subscription Plans Section End -->
+<script>
+    const profilePic = document.getElementById("profile-pic");
+    const profileDialog = document.querySelector(".profile-dialog");
+
+    profilePic.addEventListener("click", () => {
+      profileDialog.classList.toggle("show");
+    });
+  </script>
+</body>
+
+
+</html>

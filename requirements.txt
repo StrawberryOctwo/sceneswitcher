@@ -1,0 +1,9 @@
+opencv-python
+numpy
+aeneas
+moviepy
+pathlib
+pysrt
+Django
+Pillow==9.5.0
+matplotlib 

@@ -1,0 +1,133 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/optimization.css' %}">
+    <title>Optimization</title>
+</head>
+<body>
+<div class="root">
+    <header>
+        <img src="{% static 'assets/logo.svg' %}" alt="logo" class="logo">
+        <img src="{% static 'assets/user.png' %}" alt="user" class="user">
+    </header>
+    <div class="container">
+        <div class="menu">
+            <ul>
+                <li class="name">Olivia Rhye</li>
+                <li class="email">olivia@example.com</li>
+                <li>View profile</li>
+                <li>Credit left <span>50</span></li>
+                <li>Setting</li>
+                <li>Log out</li>
+            </ul>
+        </div>
+        <div class="wrapper">
+            <div class="control_panel">
+                <div class="control">
+                    <div class="block_a">
+                        <h1>Scene Optimization Bot</h1>
+                        <div class="upload">
+                            <div class="upload_file_wrapper">
+                                <span>Upload your video:</span>
+                                <label for="video">
+                                    <span class="button btn-center">
+                                        <img src="{% static 'assets/upload.svg' %}"  alt="upload">
+                                        Choose file
+                                    </span>
+                                    <span class="selected_file selected_video">No file chosen</span>
+                                </label>
+                                <input id="video" type="file" accept="video/mp4,video/x-m4v,video/*">
+                            </div>
+                            <div class="upload_file_wrapper">
+                                <span>Video’s MP3 File:</span>
+                                <label for="mp3">
+                                    <span class="button">
+                                        <img src="{% static 'assets/upload.svg' %}" alt="upload">
+                                        Choose file
+                                    </span>
+                                    <span class="selected_file selected_mp3">No file chosen</span>
+                                </label>
+                                <input id="mp3" type="file" accept="audio/mp3">
+                            </div>
+                            <div class="upload_file_wrapper">
+                                <span>Video’s transcribed Text File:</span>
+                                <label for="transcribed">
+                                    <span class="button">
+                                        <img src="{% static 'assets/upload.svg' %}" alt="upload">
+                                        Choose file
+                                    </span>
+                                    <span class="selected_file selected_transcribe">No file chosen</span>
+                                </label>
+                                <input id="transcribed" type="file" accept=".csv, .txt">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block_b">
+                        <h1>Subtitle Design</h1>
+                        <div class="font">
+                            <div class="upload_file_wrapper">
+                                <span>Upload Font File:</span>
+                                <label for="font">
+                                    <span class="button">
+                                        <img src="{% static 'assets/upload.svg' %}" alt="upload">
+                                        Choose file
+                                    </span>
+                                    <span class="selected_file selected_font">No file chosen</span>
+                                </label>
+                                <input id="font" type="file" accept=".ttf, .otf">
+                            </div>
+                          
+                                  
+
+                            <div class="color-picker-container">
+                            <label for="fontColor">Font Color:</label>
+                            <div class="color-input-wrapper">
+                                <input type="color" id="fontColor" class="color-input" value="#ffffff">
+                                <span class="color-value">#ffffff</span>
+                            </div>
+                            </div>
+
+                            <div class="color-picker-container">
+                                <label for="subtitles-background">Subtitles Background Color:</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="subtitles-background" class="subtitles-background-color-input">
+                                    <span class="subtitles-background-color-value">#ffffff</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   <div class="slider-container">
+                    <label for="fontSize">Font Size: <span class="slider-value">20</span></label>
+                    <input type="range" id="fontSize" min="0" max="200" value="100" class="slider">
+                   </div>
+                     {% csrf_token %}                       
+                    <button id="processButton">Process</button>
+                </div>
+            </div>
+                <div class="display-wrapper">
+                <div class="display">
+                    <h1 class="preview">Preview</h1>
+                    <div class="block">
+                    <p id="textContent">Your New Scene Will Go Here</p>
+                    <div class="subtitle_text">
+                    <span id="subtitleText">This Is How Your Original Subtitle <br> Text Will Be Displayed</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+                <div class="display">
+                    <h1 class="tutorial">Tutorial</h1>
+                    <div class="block"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/optimization.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+.pricing_container{
+    padding: 8px;
+}
+.pricing {
+    padding: 80px 20px;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #FFF7ED;
+}
+
+.pricing > h1 {
+    font-family: Poppins, sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 68px;
+    letter-spacing: -0.03em;
+    text-align: center;
+    color: #1D1F1E;
+}
+
+.pricing > h2 {
+    margin: 24px 0 80px 0;
+    font-family: Poppins, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.004em;
+    text-align: center;
+    color: #646A69;
+}
+
+.pricing > .price_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.pricing > .price_container > .card {
+    position: relative;
+    /*margin: 40px;*/
+    width: 384px;
+    height: 456px;
+    padding: 32px;
+    border-radius: 8px;
+    background: #FDFFFF;
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing > .price_container > .card > .info_message {
+    position: absolute;
+    top: -25px;
+    right: 40px;
+    width: 116px;
+    height: 25px;
+    padding: 6px 16px 4px 16px;
+    border-radius: 8px 8px 0 0;
+    background: #BEF264;
+}
+
+.pricing > .price_container > .card > .info_message > p {
+    font-family: Poppins, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: center;
+}
+
+.pricing > .price_container > .card:nth-child(2) {
+    background: #022C22;
+}
+
+.pricing > .price_container > .card:nth-child(2) > p,
+.pricing > .price_container > .card:nth-child(2) > h4,
+.pricing > .price_container > .card:nth-child(2) > .price_info > h1 {
+    color: #FFFFFF;
+}
+
+.pricing > .price_container > .card:nth-child(2) > h5 {
+    color: #FFFFFF80;
+}
+
+.pricing > .price_container > .card:nth-child(2) > .price_info > p {
+    color: #FFFFFFB2;
+}
+
+.pricing > .price_container > .card:nth-child(2) > .video_per_month > p {
+    color: #FFFFFF;
+}
+
+.pricing > .price_container > .card > .icon {
+    width: 56px;
+    height: 56px;
+    padding: 14px;
+    border-radius: 8px;
+    background: #BEF264;
+    margin-bottom: 16px;
+}
+
+.pricing > .price_container > .card > h4 {
+    margin: 16px 0;
+    font-family: Poppins, sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 36px;
+    letter-spacing: -0.01em;
+    text-align: left;
+}
+
+.pricing > .price_container > .card > .price_info {
+    display: flex;
+    align-items: center;
+}
+
+.pricing > .price_container > .card > .price_info > h1 {
+    font-family: Poppins, sans-serif;
+    font-size: 62px;
+    font-weight: 400;
+    line-height: 68px;
+    letter-spacing: -0.03em;
+    text-align: left;
+    color: #1D1F1E;
+}
+
+.pricing > .price_container > .card > .price_info > p {
+    margin-left: 16px;
+    font-family: Poppins, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: #646A69;
+}
+
+.pricing > .price_container > .card > h5 {
+    margin: 16px 0;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #00000080;
+}
+
+.pricing > .price_container > .card > .video_per_month {
+    display: flex;
+    align-items: center;
+}
+
+.pricing > .price_container > .card > .video_per_month > p {
+    margin-left: 12px;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.004em;
+    text-align: left;
+    color: #1D1F1E;
+}
+
+.pricing > .price_container > .card > button {
+    cursor: pointer;
+    margin-top: 32px;
+    width: 100%;
+    padding: 16px 24px 16px 24px;
+    border-radius: 200px;
+    border: 1px solid black;
+    background: transparent;
+    font-family: Poppins, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.004em;
+    text-align: center;
+    transition: transform .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pricing > .price_container > .card > button > img {
+    margin-left: 8px;
+}
+
+.pricing > .price_container > .card > button:active {
+    transform: scale(.9);
+    transition: transform .5s;
+}
+
+.pricing > .price_container > .card:nth-child(2) > button {
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+
+@media screen and (max-width: 560px) {
+    .pricing {
+        padding: 80px 24px;
+        width: 100%;
+        min-height: auto;
+        height: auto;
+    }
+
+    .pricing > h1 {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 36px;
+    }
+
+    .pricing > h2 {
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -0.01em;
+        margin-bottom: 40px;
+    }
+
+    .pricing > .price_container > .card {
+        margin: 40px 0;
+        width: 100%;
+    }
+
+    .pricing > .price_container > .card > h4 {
+        font-size: 20px;
+    }
+
+    .pricing > .price_container > .card > .price_info > h1 {
+        font-size: 48px;
+    }
+
+    .pricing > .price_container > .card > .price_info > p {
+        font-size: 16px;
+    }
+
+    .pricing > .price_container > .card > h5 {
+        text-align: center;
+    }
+
+}
+

@@ -1,0 +1,47 @@
+<div id="customNotification" class="custom-notification">
+    <p id="notification-message">This is a customizable notification!</p>
+</div>
+
+<style>
+    /* Custom notification styles */
+    .custom-notification {
+        display: none;
+        position: fixed;
+        top: 100px;
+        right: 50px;
+        z-index: 1000;
+        background-color: #022c22;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        font-size: 16px;
+        max-width: 300px;
+        animation: fadeout 0.5s ease-in-out 3.5s forwards;
+    }
+
+    .custom-notification p {
+        margin: 0;
+        text-align: center;
+    }
+
+    /* Animation to fade out the notification */
+    @keyframes fadeout {
+        to {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+</style>
+
+<script>
+    function showNotification(message = 'This is a customizable notification!', duration = 3000) {
+        const notification = document.getElementById('customNotification');
+        const notificationMessage = document.getElementById('notification-message');
+        notificationMessage.innerText = message;
+        notification.style.display = 'block';
+        setTimeout(function() {
+            notification.style.display = 'none';
+        }, duration);
+    }
+</script>

@@ -1,0 +1,164 @@
+.switcher_container{
+    /*padding: 8px;*/
+}
+.scene_switcher {
+    border-radius: 16px;
+    padding: 80px 20px;
+    width: 100%;
+    min-height: 100vh;
+    background: #FFF7ED;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.scene_switcher > h1 {
+    font-family: Poppins, sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 66px;
+    text-align: center;
+    color: #191919;
+}
+
+.scene_switcher > p {
+    max-width: 950px;
+    margin: 24px 0 18px 0;
+    font-family: Poppins, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: center;
+    color: #000000B2;
+}
+
+.original_video_container {
+    width: 634px;
+    height: 682px;
+    padding: 24px 0 24px 0;
+    border-radius: 8px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /*box-shadow: 0 4px 4px -4px #0C0C0D0D, 0 16px 32px -4px #0C0C0D1A;*/
+    box-shadow: 0 2px 2px -2px #0C0C0D0D, -2px -2px -2px #0C0C0D0D;
+
+}
+
+.original_video_container > h1 {
+    margin: 24px 0;
+    font-family: Poppins, sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 48px;
+    text-align: center;
+}
+
+.original_video_container > video {
+    width: 95%;
+    height: 562px;
+    object-fit: contain;
+    border-right: 8px;
+
+}
+
+video[data-state="hidden"] {
+    display: none;
+}
+
+.video_wrapper {
+    margin-top: 72px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.video_wrapper > .card {
+    margin: 15px 10px;
+    width: 380px;
+    height: 480px;
+    padding: 24px 0;
+    background: transparent;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 2px 2px -2px #0C0C0D0D, -2px -2px -2px #0C0C0D0D;
+}
+
+.video_wrapper > .card > h2 {
+    font-family: Poppins, sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 48px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 24px;
+}
+
+.video_wrapper > .card > video {
+    width: 95%;
+    height: 380px;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+
+@media screen and (max-width: 560px) {
+    .scene_switcher {
+        padding: 40px 24px;
+        width: 100%;
+        min-height: auto;
+        height: auto;
+    }
+
+    .scene_switcher > h1 {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 36px;
+        text-align: center;
+    }
+
+    .scene_block > p {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: -0.01em;
+    }
+
+    .original_video_container {
+        padding: 24px 0;
+        width: 100%;
+        height: 500px;
+    }
+
+    .original_video_container > h1,
+    .video_wrapper > .card > h2 {
+        font-size: 24px;
+        line-height: 36px;
+        margin: 0 0 24px 0;
+    }
+
+    .original_video_container > img,
+    .video_wrapper > .card > img {
+        height: 392px;
+    }
+
+    .video_wrapper {
+        margin-top: 24px;
+    }
+
+    .video_wrapper > .card {
+        margin: 15px 0;
+        padding: 24px 0;
+        width: 100%;
+    }
+
+
+}

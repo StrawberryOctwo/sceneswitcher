@@ -1,0 +1,313 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      nav {
+        background-color: #022c22;
+        padding: 12px 108px 12px 108px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid lightgrey;
+      }
+      nav img:first-child {
+        height: 40px;
+        padding: 4px;
+      }
+
+      #profile-pic {
+        height: 50px;
+        width: 50px;
+      }
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        align-items: center;
+      }
+      .contant {
+        margin-top: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 48px 36px 48px 36px;
+        gap: 48px;
+        border-radius: 8px 0px 0px 0px;
+        opacity: 0px;
+        box-shadow: 0px 4px 4px -4px #0c0c0d0d;
+        border-radius: 8px;
+        box-shadow: 0px 16px 32px -4px #0c0c0d1a;
+      }
+      .title {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo-content {
+        height: 40px;
+      }
+      .logo-content img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      h1 {
+        font-family: Poppins;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 48px;
+        text-align: center;
+      }
+      .title img {
+        width: 36px;
+        height: 36px;
+      }
+      .video-container {
+        margin-block: 2rem;
+        width: 100%;
+        height: 321px;
+        border-radius: 16px;
+        background: #d9d9d9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      p {
+        font-family: Poppins;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 36px;
+        text-align: left;
+      }
+      button {
+        max-width: 379px;
+        width: 100%;
+        font-size: 18px;
+        padding: 8px 24px 8px 24px;
+        gap: 10px;
+        border-radius: 50px;
+        background-color: transparent;
+        border: 1px solid #ff3e3e;
+        color: #ff3e3e;
+        opacity: 0px;
+        font-family: Poppins;
+        cursor: pointer;
+      }
+
+      button:hover {
+        scale: 0.98;
+      }
+
+      button img {
+        color: #bef264;
+      }
+      .button-container {
+        display: flex;
+        width: 100%;
+      }
+      .profile-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #ffffff;
+        position: relative;
+      }
+
+      .profile-container span {
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+      }
+
+      #profile-pic {
+        border-left: 1.5px solid grey;
+        padding-left: 12px;
+        width: 50px;
+        height: 100%;
+        object-fit: contain;
+        cursor: pointer;
+      }
+
+      .profile-dialog {
+        position: absolute;
+        top: 100%;
+        width: 250px;
+        right: 0;
+        background-color: white;
+        padding-top: 18px;
+        color: #191919;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        font-family: Plus Jakarta Sans, sans-serif;
+        display: none;
+      }
+      .profile-dialog h4 {
+        font-size: 20px;
+        padding-bottom: 4px;
+        font-weight: 600;
+        padding-inline: 14px;
+        line-height: 30.24px;
+        letter-spacing: -0.02em;
+        text-align: left;
+      }
+      .profile-dialog p {
+        font-size: 16px;
+        font-weight: 400;
+        padding-inline: 14px;
+        line-height: 25.2px;
+        letter-spacing: -0.02em;
+        text-align: left;
+        color: #191919b2;
+        opacity: 70%;
+      }
+
+      .profile-dialog .buttons {
+        margin-top: 12px;
+      }
+
+      .profile-dialog button {
+        border-radius: unset;
+        border: none;
+        color: #191919;
+        background: transparent;
+        padding: unset;
+        margin: unset;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 25.2px;
+        letter-spacing: -0.02em;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .buttons button:nth-child(1) {
+        border-top: 1px solid gray;
+      }
+      .buttons button:last-child {
+        border-top: 1px solid gray;
+      }
+      .profile-dialog button:hover {
+        scale: 1.01;
+        background-color: transparent;
+      }
+
+      .profile-dialog.show {
+        display: block;
+      }
+
+      .loading-dots {
+        display: inline-block;
+        margin-left: 10px;
+      }
+
+      .loading-dots span {
+        font-size: 24px;
+        color: #ff3e3e;
+        opacity: 0;
+        animation: blink 1s infinite;
+      }
+
+      .loading-dots span:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+
+      .loading-dots span:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+
+      .loading-dots span:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+    </style>
+	<script>
+	    document.addEventListener('DOMContentLoaded', function() {
+	        fetch('/process_video', {
+	            method: 'POST'
+	        }).then(response => {
+	            if (response.ok) {
+	                // Redirect to the download page if successful
+                  setTimeout(function() {
+                    window.location.href = "{% url 'download' %}";
+                  }, 2000);
+	                
+	            } else {
+	                // Show an error and redirect to the app page if processing fails
+	                showAlert('Failed to compile and replace segments.');
+	                window.location.href = "{% url 'app' %}";
+	            }
+	        }).catch(error => {
+	            console.error('Error during processing:', error);
+	            showAlert('An error occurred during processing.');
+	            window.location.href = "{% url 'app' %}";
+	        });
+	    });
+	</script>
+  {% include 'includes/custom_alert.html' %}
+  </head>
+  <body>
+    {% include 'includes/profile.html' %}
+    <section>
+      <div class="contant">
+        <div class="logo-content">
+          <img src="{% static 'assets/Frame39984Black.svg' %}" alt="" />
+        </div>
+        <p>
+          Processing Video
+          <span class="loading-dots">
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+          </span>
+        </p>
+        <button>Cancel</button>
+      </div>
+    </section>
+
+    <!-- <script>
+      const profilePic = document.getElementById("profile-pic");
+      const profileDialog = document.querySelector(".profile-dialog");
+
+      profilePic.addEventListener("click", () => {
+        profileDialog.classList.toggle("show");
+      });
+    </script> -->
+  </body>
+</html>

@@ -1,0 +1,112 @@
+footer {
+    padding: 72px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #022C22;
+}
+
+footer > hr {
+    width: 100%;
+    margin: 48px 0;
+    background: #FFFFFF80;
+}
+
+footer > h4 {
+    font-family: Poppins, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: center;
+    color: #FFFFFF80;
+}
+
+footer > .wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer > .wrapper > img {
+    cursor: pointer;
+}
+
+footer > .wrapper ul, footer > .wrapper ul li {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer > .wrapper > .navigation{
+    /*width: 600px;*/
+}
+
+footer > .wrapper > .navigation li a {
+    cursor: pointer;
+    margin: 0 20px;
+    font-family: Poppins, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 68px;
+    text-align: center;
+    color: #FFFFFFB2;
+}
+
+footer > .wrapper > .socials li {
+    cursor: pointer;
+    margin: 0 24px;
+    width: 24px;
+    height: 24px;
+}
+
+@media screen and (max-width: 560px) {
+    footer {
+        padding: 40px 24px;
+        width: 100%;
+        min-height: 100%;
+        height: auto;
+    }
+
+    footer > h4 {
+        font-size: 14px;
+    }
+
+    footer > .wrapper {
+        width: 100%;
+        align-items: flex-start;
+        flex-direction: column;
+        /*justify-content: space-between;*/
+    }
+
+    footer > .wrapper > img {
+        margin-bottom: 24px;
+    }
+
+    footer > .wrapper ul, footer > .wrapper ul li {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 24px 0;
+    }
+
+    footer > .wrapper > .navigation li {
+        cursor: pointer;
+        margin: 24px;
+        font-family: Poppins, sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 68px;
+        text-align: center;
+        color: #FFFFFFB2;
+    }
+
+    footer > .wrapper > .socials li {
+        cursor: pointer;
+        margin: 0 24px;
+        width: 24px;
+        height: 24px;
+    }
+}

@@ -1,0 +1,514 @@
+{% load static %}
+<!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Processing Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      nav {
+        background-color: #022c22;
+        padding: 12px 108px 12px 108px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid lightgrey;
+      }
+
+      nav img:first-child {
+        height: 40px;
+        padding: 4px;
+      }
+
+      #profile-pic {
+        height: 50px;
+        width: 50px;
+      }
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        align-items: center;
+      }
+      .contant {
+        display: flex;
+        flex-direction: column;
+        max-width: 530px;
+        width: 100%;
+        gap: 16px;
+        border-radius: 8px;
+        padding: 24px 36px;
+        box-shadow: 0px 4px 4px -4px #0c0c0d0d;
+        box-shadow: 0px 16px 32px -4px #0c0c0d1a;
+        position: absolute;
+        margin: 40px;
+      }
+      .title {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        height: 36px;
+      }
+
+      .logo {
+        height: 36px;
+        width: 100%;
+      }
+
+      .logo img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+
+      #arrow {
+        width: max-content;
+      }
+      .title h1 {
+        width: 481px;
+        height: 96px;
+        font-family: Poppins;
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 48px;
+        text-align: center;
+      }
+
+      .instrudaction {
+        display: flex;
+        flex-direction: column;
+        max-width: 673px;
+        width: 100%;
+        padding: 20px;
+        gap: 12px;
+        border-radius: 8px;
+        background-color: #c4c4c433;
+      }
+
+      .instrudaction h3 {
+        font-family: Poppins;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 24px;
+        text-align: left;
+      }
+
+      .instrudaction div {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .instrudaction div p {
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: left;
+        color: #000000b2;
+        text-transform: capitalize;
+      }
+      .instrudaction div p span {
+        font-family: Poppins;
+        font-weight: 600;
+      }
+
+      .video-container h1 {
+        font-family: Poppins;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 36px;
+        text-align: left;
+      }	
+	.video-container {
+    position: relative;
+    width: 100%;
+    height: 301px;
+    background: #d9d9d9;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    object-fit: contain;
+}
+
+.control-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10; /* Ensure button is on top of the video */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-button i {
+    font-size: 24px;
+}
+
+.custom-controls {
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    width: 90%;
+    transform: translateX(-50%);
+}
+
+.seek-bar {
+    width: 100%;
+    -webkit-appearance: none;
+    background: rgba(0, 0, 0, 0.5);
+    height: 4px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #fff;
+    border-radius: 50%;
+    height: 13px;
+    width: 13px;
+    cursor: pointer;
+}
+
+.seek-bar::-moz-range-thumb {
+    background: #fff;
+    border-radius: 50%;
+    height: 13px;
+    width: 13px;
+    cursor: pointer;
+}
+
+      a {
+        color: #bef264;
+        text-decoration: none;
+      }
+      .button {
+        padding: 4px 16px 4px 16px;
+	cursor : pointer;
+        gap: 10px;
+        margin-top: 4px;
+        border-radius: 50px;
+        background: #022c22;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        color: #bef264;
+        font-family: Poppins;
+        font-size: 16px;
+        border: none;
+        font-weight: 500;
+        line-height: 36px;
+        text-align: left;
+      }
+      .button-container {
+        display: flex;
+        width: 100%;
+      }
+      .profile-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #ffffff;
+        position: relative;
+      }
+
+      .profile-container span {
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+      }
+
+      #profile-pic {
+        border-left: 1.5px solid grey;
+        padding-left: 12px;
+        width: 50px;
+        height: 100%;
+        object-fit: contain;
+        cursor: pointer;
+      }
+      .profile-dialog {
+        position: absolute;
+        top: 100%;
+        width: 250px;
+        right: 0;
+        background-color: white;
+        padding-top: 18px;
+        color: #191919;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        font-family: Plus Jakarta Sans, sans-serif;
+        display: none;
+      }
+      .profile-dialog h4 {
+        font-size: 20px;
+        padding-bottom: 4px;
+        font-weight: 600;
+        padding-inline: 14px;
+        line-height: 30.24px;
+        letter-spacing: -0.02em;
+        text-align: left;
+      }
+      .profile-dialog p {
+        font-size: 16px;
+        font-weight: 400;
+        padding-inline: 14px;
+        line-height: 25.2px;
+        letter-spacing: -0.02em;
+        text-align: left;
+        color: #191919b2;
+        opacity: 70%;
+      }
+
+      .profile-dialog .buttons {
+        margin-top: 12px;
+      }
+
+      .profile-dialog button {
+        border-radius: unset;
+        border: none;
+        color: #191919;
+        background: transparent;
+        padding: unset;
+        margin: unset;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 25.2px;
+        letter-spacing: -0.02em;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .buttons button:nth-child(1) {
+        border-top: 1px solid gray;
+      }
+      .buttons button:last-child {
+        border-top: 1px solid gray;
+      }
+      .profile-dialog button:hover {
+        scale: 1.01;
+        background-color: transparent;
+      }
+
+      .profile-dialog.show {
+        display: block;
+      }
+    </style>
+    {% include 'includes/custom_notification.html' %}
+    <script>
+                let selectedSegments = [];
+
+                function getSceneIndex(currentTime) {
+                    fetch(`/get_srt_index?time=${currentTime}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.srt_index !== -1) {
+                                var newFileInput = document.createElement('input');
+                                newFileInput.type = 'file';
+                                newFileInput.accept = 'video/*';
+                                newFileInput.onchange = function(event) {
+                                    var file = event.target.files[0];
+
+                                    let formData = new FormData();
+                                    formData.append('scene', file);
+                                    formData.append('srt_index', data.srt_index);
+
+                                    fetch('/upload_new_scene', {
+                                        method: 'POST',
+                                        body: formData
+                                    }).then(response => {
+                                        if (response.ok) {
+                                            showNotification('Your Selected Scene Has Been Changed Successfully.');
+                                        } else {
+                                            showAlert('Failed to upload the segment.');
+                                        }
+                                    });
+                                };
+                                newFileInput.click();
+                            }
+                        })
+                        .catch(error => console.error('Error:', error));
+                }
+                
+                  function processSegments() {
+		        document.getElementById('spinner').style.display = 'block';  // Show the spinner
+		        window.location.href = "{% url 'process_video' %}";
+		    }
+                document.addEventListener('DOMContentLoaded', function() {
+                    var videoPlayer = document.getElementById('videoPlayer');
+                    videoPlayer.addEventListener('click', function(event) {
+                        if (event.shiftKey) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            getSceneIndex(videoPlayer.currentTime);
+                        }
+                    });
+                });
+            </script>
+           
+        </head>
+        {% include 'includes/custom_alert.html' %}
+        <body>
+          {% include 'includes/profile.html' %}
+    <section>
+      <div class="contant">
+        <div class="title">
+         <a href="{% url 'app' %}"><img
+            id="arrow"
+            src="{% static 'assets/chevron-left.svg' %}"
+            alt="chevron-left"
+            width="100%"
+            height="100%"
+          /></a>
+          <div class="logo">
+            <img
+              src="{% static 'assets/Frame39984Black.svg' %}"
+              alt="Frame399841"
+              height="52px"
+              width="357px"
+            />
+          </div>
+        </div>
+        <div class="instrudaction">
+          <h3>Instructions:</h3>
+          <div>
+            <p>
+              - Play the video and pause it at the point you want to replace.
+            </p>
+            <p>
+              <span> - Hold Shift + click </span>
+              on the video to choose a new video segment to upload and replace
+              the current segment.
+            </p>
+          </div>
+        </div>
+
+        <div class="video-container">
+          <video id="videoPlayer">
+            <source src="{% url 'load_media' 'original_video.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <button id="playPauseBtn" class="control-button">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="custom-controls">
+            <input id="seekBar" type="range" min="0" max="100" value="0" step="0.1" class="seek-bar">
+          </div>
+        </div>
+
+            <div id="spinner" class="spinner"></div> <!-- Loading Spinner -->
+            <button class="btn btn-success button" onclick="processSegments()">Process</button>
+        </div>
+ 	<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const video = document.getElementById("videoPlayer");
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const seekBar = document.getElementById('seekBar');
+        const icon = playPauseBtn.querySelector('i');
+        const videoContainer = document.querySelector('.video-container');
+
+        // Update the seek bar as the video plays
+        video.addEventListener('timeupdate', () => {
+            const value = (video.currentTime / video.duration) * 100;
+            seekBar.value = value;
+        });
+
+        // Seek video when seek bar is changed
+        seekBar.addEventListener('input', () => {
+            const newTime = (seekBar.value / 100) * video.duration;
+            video.currentTime = newTime;
+        });
+
+        // Play/pause button functionality
+        playPauseBtn.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-pause');
+            } else {
+                video.pause();
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+            }
+        });
+
+        // Handle video end
+        video.addEventListener('ended', () => {
+            video.pause();
+            video.currentTime = 0; // Reset video to the start
+            icon.classList.remove('fa-pause');
+            icon.classList.add('fa-play'); // Reset button to play icon
+            seekBar.value = 0; // Reset seek bar
+        });
+
+        // Optional: Ensure controls are hidden after a delay when not hovering
+        let hoverTimeout;
+        
+        videoContainer.addEventListener('mouseover', () => {
+            clearTimeout(hoverTimeout);
+            videoContainer.querySelectorAll('.custom-controls, .control-button').forEach(control => {
+                control.style.opacity = '1';
+            });
+        });
+
+        videoContainer.addEventListener('mouseout', () => {
+            hoverTimeout = setTimeout(() => {
+                videoContainer.querySelectorAll('.custom-controls, .control-button').forEach(control => {
+                    control.style.opacity = '0';
+                });
+            }, 1000);  // Adjust the delay (in milliseconds) as needed
+        });
+    });
+      	// const profilePic = document.getElementById("profile-pic");
+      	// const profileDialog = document.querySelector(".profile-dialog");
+
+      	// profilePic.addEventListener("click", () => {
+        // profileDialog.classList.toggle("show");
+      	// });
+    </script>
+        </body>
+        </html>

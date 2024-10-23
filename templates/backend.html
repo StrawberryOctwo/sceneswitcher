@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scene Switcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/backend.css' %}" />
+
+  </head>
+
+  <body>
+    {% include 'includes/profile.html' %}
+    <main>
+      <section>
+        <div class="left">
+          <h1>Upload And Customise</h1>
+
+       	    <form method="POST">
+            <fieldset name="upload-video">
+              <legend>Upload Your Video:</legend>
+              <input id="Video" class="input" type="file" placeholder="No file chosen" accept="video/mp4,video/x-m4v,video/*"/>
+            </fieldset>
+            <fieldset name="upload-mp3">
+              <legend>Video's MP3 File:</legend>
+              <input id="mp3" class="input" type="file" placeholder="No file chosen" accept="audio/mp3"/>
+            </fieldset>
+            <fieldset name="upload-transcript">
+              <legend>Video's Transcribed Text File:</legend>
+              <input id="Video-txt" class="input" type="file" placeholder="No file chosen"  accept=".csv, .txt"/>
+            </fieldset>
+
+            <h2>Subtitle Design</h2>
+
+            <fieldset name="upload-font">
+              <legend>Upload Font File:</legend>
+              <input id="font" class="input" type="file" placeholder="No file chosen" accept=".ttf, .otf"/>
+            </fieldset>
+
+            <fieldset name="font-size">
+              <legend class="font-size">
+                Font Size: <span id="slider-val">36</span>
+              </legend>
+
+              <input
+                type="range"
+                min="1"
+                max="100"
+                value="36"
+                class="slider"
+                id="myRange"
+              />
+            </fieldset>
+
+            <div>
+              <label for="font-color">Font Color:</label>
+              <div id="font-color" name="font-color" class="color-picker">
+                <input type="color" id="favcolor-1" value="#ffffff" />
+                <input id="color-value-1" value="#ffffff" />
+              </div>
+            </div>
+
+            <div>
+              <label for="subtitle-color">Subtitle Background Color:</label>
+              <div id="subtitle-color" name="subtitle-bg" class="color-picker">
+                <input type="color" id="favcolor-2" value="#000000" />
+                <input id="color-value-2" value="#000000" />
+              </div>
+            </div>
+	    {% csrf_token %}                       
+            <button id="processButton" type="button">Process</button>
+	    </form>
+        </div>
+
+        <div class="right">
+          <h1 id="tutorial">Tutorial</h1>
+          <div class="tutorial-box"></div>
+          <h1 id="preview">Preview</h1>
+          <div class="preview-box">
+            <h1>Your New Scene Will Go Here</h1>
+
+            <h2 id="subtitle-text">
+              This Is How Your Original Subtitle Text Will Be Displayed
+            </h2>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- <script>
+      const profilePic = document.getElementById("profile-pic");
+      const profileDialog = document.querySelector(".profile-dialog");
+
+      profilePic.addEventListener("click", () => {
+        profileDialog.classList.toggle("show");
+      });
+    </script> -->
+    {% include 'includes/custom_alert.html' %}
+    {% include 'includes/processing_message.html' %}
+    <script src="{% static 'js/backend.js' %}"></script>
+  </body>
+</html>

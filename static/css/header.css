@@ -1,0 +1,105 @@
+header {
+    position: relative;
+    width: 100%;
+    height: 96px;
+    padding: 24px 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background: #022C22;
+}
+header > .menu{
+    display: none;
+}
+
+header > .navigation {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+header > .navigation li a {
+    cursor: pointer;
+    text-decoration: none;
+    margin: 0 24px;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.004em;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+header > .auth {
+    display: flex;
+}
+
+header > .auth > .login {
+    cursor: pointer;
+    margin-right: 36px;
+    border: none;
+    background: none;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.004em;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+header > .auth > .get_started {
+    cursor: pointer;
+    padding: 12px 20px 12px 20px;
+    border-radius: 200px;
+    background: #FFFFFF;
+    border: none;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.004em;
+    text-align: center;
+    color: #022C22;
+    transition: transform .5s;
+}
+
+header > .auth > .get_started:active {
+    transform: scale(.9);
+    transition: transform .5s;
+}
+
+
+@media screen and (max-width: 560px) {
+    header {
+        width: 100%;
+        height: 77px;
+        padding: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        background: #022C22;
+    }
+
+    header > .navigation li, header > .auth {
+        display: none;
+    }
+
+    header > .logo {
+        width: 201px;
+        height: 29px;
+    }
+
+    header > .menu{
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        right: 24px;
+        top: calc((100% - 25px) / 2);
+    }
+
+}

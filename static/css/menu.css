@@ -1,0 +1,38 @@
+.menu_wrapper {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: #022C22;
+}
+
+.navigation li, .navigation li a {
+    cursor: pointer;
+    text-decoration: none;
+    list-style-type: none;
+    margin: 24px 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+    font-family: Poppins, sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.004em;
+    text-align: center;
+}
+
+.close_menu {
+    cursor: pointer;
+    position: absolute;
+    top: 34px;
+    right: 32px;
+}
+
+

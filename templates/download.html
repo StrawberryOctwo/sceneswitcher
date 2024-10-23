@@ -1,0 +1,333 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      nav {
+        background-color: #022c22;
+        padding: 12px 108px 12px 108px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid lightgrey;
+      }
+      nav img:first-child {
+        height: 40px;
+        padding: 4px;
+      }
+      #profile-pic {
+        height: 50px;
+        width: 50px;
+      }
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        align-items: center;
+      }
+      .contant {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 560px;
+        padding: 32px 36px;
+        border-radius: 8px 0px 0px 0px;
+        opacity: 0px;
+        margin: 60px;
+        box-shadow: 0px 4px 4px -4px #0c0c0d0d;
+        box-shadow: 0px 16px 32px -4px #0c0c0d1a;
+      }
+      .title {
+        display: flex;
+        align-items: center;
+      }
+      .title h1 {
+        width: 100%;
+        font-family: "Poppins", sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 36px;
+        padding-inline: 1rem;
+        text-align: center;
+      }
+      .title img {
+        width: 36px;
+        height: 36px;
+      }
+      .video-container {
+        margin-block: 2rem;
+        width: 100%;
+        height: 321px;
+        border-radius: 8px;
+        background: #d9d9d9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+      .video-container video {
+        position: relative;
+        width: 100%;
+        height: auto; /* Auto height based on aspect ratio */
+        max-height: 100%; /* Ensures the video doesn't exceed the container height */
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        object-fit: contain; /* Ensures the video scales properly within the container */
+      }
+      .control-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10; /* Ensure button is on top of the video */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .control-button i {
+        font-size: 24px;
+      }
+      .custom-controls {
+        position: absolute;
+        bottom: 3px;
+        left: 50%;
+        width: 90%;
+        transform: translateX(-50%);
+      }
+      .seek-bar {
+        width: 100%;
+        -webkit-appearance: none;
+        background: rgba(0, 0, 0, 0.5);
+        height: 4px;
+        border-radius: 5px;
+        outline: none;
+        cursor: pointer;
+      }
+      .seek-bar::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        background: #fff;
+        border-radius: 50%;
+        height: 13px;
+        width: 13px;
+        cursor: pointer;
+      }
+      .seek-bar::-moz-range-thumb {
+        background: #fff;
+        border-radius: 50%;
+        height: 13px;
+        width: 13px;
+        cursor: pointer;
+      }
+      .button {
+        padding: 8px 24px 8px 24px;
+        gap: 10px;
+        border-radius: 50px;
+        background: #022c22;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        color: #bef264;
+        font-family: Poppins;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 36px;
+        text-align: left;
+        border: none;
+        cursor: pointer;
+        transition: all ease 0.2s;
+      }
+      .button:hover {
+        scale: 0.98;
+      }
+      .button img {
+        color: #bef264;
+      }
+      .button-container {
+        display: flex;
+        width: 100%;
+      }
+      .profile-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #ffffff;
+      }
+      .profile-container span {
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+      }
+      #profile-pic {
+        border-left: 1.5px solid grey;
+        padding-left: 12px;
+        width: 50px;
+        height: 100%;
+        object-fit: contain;
+      }
+    </style>
+    <script>
+ function downloadVideo() {
+        const link = document.createElement('a');
+        link.href = "{% url 'load_final_media' 'original_video.mp4' %}";  // Replace with the actual video URL
+        link.download = 'original_video.mp4';       // Name of the file to download
+        link.click();
+        setTimeout(function() {
+        location.reload();
+        }, 500);
+    }
+    </script>
+</head>
+<body>
+    <nav>
+      <a href="{% url 'index' %}"><img src="{% static 'assets/Frame399841.svg' %}" alt="Frame" /></a>
+      <div class="profile-container">
+        <span>Credits Remaining: {{ request.user.credits }}</span>
+        <!-- <img id="profile-pic" src="{% static 'assets/avatar-img.png' %}" alt="avatar" />
+        <div class="profile-dialog">
+          <div class="user">
+            <h4>Olivia Rhye</h4>
+            <p>olivia@example.com</p>
+          </div>
+          <div class="buttons">
+            <button>View profile</button>
+            <button>Credit left <span>50</span></button>
+            <button>Setting</button>
+            <button>Log out</button>
+          </div>
+        </div> -->
+      </div>
+    </nav>
+    <section>
+      <div class="contant">
+        <a href="{% url 'video_processing' %}">
+          <button class="button">
+            Go Back To Make Some Changes
+            </button>
+          </a>
+          <br>
+        <div class="title">
+          <div>
+          <h1>Preview Your New Video</h1>
+          </div>
+        </div>
+        <div class="video-container">
+          <video id="videoPlayer" preload="auto">
+            <source src="{% url 'load_media' 'original_video.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <button id="playPauseBtn" class="control-button">
+            <i class="fas fa-play"></i>
+          </button>
+          <div class="custom-controls">
+            <input id="seekBar" type="range" min="0" max="100" value="0" step="0.1" class="seek-bar">
+          </div>
+        </div>
+        <div class="button-container">
+          {% if request.user.credits > 0 %}
+            <a style="text-decoration: none;" href="{% url 'app' %}" onclick="downloadVideo()" class="button">
+              Download Processed Video
+              <img src="{% static 'assets/download.svg' %}" alt="download" />
+            </a>
+          {% else %}
+          <button class="button">
+          You don't have enough credits
+          </button>
+          {% endif %}
+        </div>
+        <p style="margin-top: 15px; font-size: 15px;">
+          *Please Note That When You Click Download The Watermark Will Be Removed
+        </p>
+      </div>
+    </section>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+    const video = document.getElementById("videoPlayer");
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const seekBar = document.getElementById('seekBar');
+    const icon = playPauseBtn.querySelector('i');
+    const videoContainer = document.querySelector('.video-container');
+
+    // Update the seek bar as the video plays
+    video.addEventListener('timeupdate', () => {
+        const value = (video.currentTime / video.duration) * 100;
+        seekBar.value = value;
+    });
+
+    // Seek video when seek bar is changed
+    seekBar.addEventListener('input', () => {
+        const newTime = (seekBar.value / 100) * video.duration;
+        video.currentTime = newTime;
+    });
+
+    // Play/pause button functionality
+    playPauseBtn.addEventListener('click', () => {
+        if (video.paused) {
+            video.play();
+            icon.classList.remove('fa-play');
+            icon.classList.add('fa-pause');
+        } else {
+            video.pause();
+            icon.classList.remove('fa-pause');
+            icon.classList.add('fa-play');
+        }
+    });
+
+    // Handle video end
+    video.addEventListener('ended', () => {
+        video.pause();
+        video.currentTime = 0; // Reset video to the start
+        icon.classList.remove('fa-pause');
+        icon.classList.add('fa-play'); // Reset button to play icon
+        seekBar.value = 0; // Reset seek bar
+    });
+
+    // Optional: Ensure controls are hidden after a delay when not hovering
+    let hoverTimeout;
+    
+    videoContainer.addEventListener('mouseover', () => {
+        clearTimeout(hoverTimeout);
+        videoContainer.querySelectorAll('.custom-controls, .control-button').forEach(control => {
+            control.style.opacity = '1';
+        });
+    });
+
+    videoContainer.addEventListener('mouseout', () => {
+        hoverTimeout = setTimeout(() => {
+            videoContainer.querySelectorAll('.custom-controls, .control-button').forEach(control => {
+                control.style.opacity = '0';
+            });
+        }, 1000);  // Adjust the delay (in milliseconds) as needed
+    });
+});
+    </script>
+</body>
+</html>
